@@ -5,10 +5,22 @@ struct TranslationView: View {
   @State private var inputText: String = "Hello, how are you?"
   @State private var translatedText: String = ""
   @State private var sourceLanguage: TranslateLanguage = .english
-  @State private var targetLanguage: TranslateLanguage = .japanese
+  @State private var targetLanguage: TranslateLanguage = .turkish
   @State private var isTranslating = false
   @State private var isDownloadingModel = false
   @State private var errorMessage: String?
+
+  // Every language ML Kit on-device translation supports (~59), sorted by name.
+  private var sortedLanguages: [TranslateLanguage] {
+    TranslateLanguage.allLanguages().sorted {
+      localizedName($0).localizedCaseInsensitiveCompare(localizedName($1)) == .orderedAscending
+    }
+  }
+
+  private func localizedName(_ language: TranslateLanguage) -> String {
+    Locale.current.localizedString(forLanguageCode: language.rawValue)?.capitalized
+      ?? language.rawValue.uppercased()
+  }
 
   var body: some View {
     NavigationStack {
@@ -18,12 +30,9 @@ struct TranslationView: View {
             .font(.headline)
 
           Picker("Source", selection: $sourceLanguage) {
-            Text("English").tag(TranslateLanguage.english)
-            Text("Japanese").tag(TranslateLanguage.japanese)
-            Text("Chinese").tag(TranslateLanguage.chinese)
-            Text("Korean").tag(TranslateLanguage.korean)
-            Text("Spanish").tag(TranslateLanguage.spanish)
-            Text("French").tag(TranslateLanguage.french)
+            ForEach(sortedLanguages, id: \.rawValue) { language in
+              Text(localizedName(language)).tag(language)
+            }
           }
           .pickerStyle(.menu)
 
@@ -31,12 +40,9 @@ struct TranslationView: View {
             .font(.headline)
 
           Picker("Target", selection: $targetLanguage) {
-            Text("English").tag(TranslateLanguage.english)
-            Text("Japanese").tag(TranslateLanguage.japanese)
-            Text("Chinese").tag(TranslateLanguage.chinese)
-            Text("Korean").tag(TranslateLanguage.korean)
-            Text("Spanish").tag(TranslateLanguage.spanish)
-            Text("French").tag(TranslateLanguage.french)
+            ForEach(sortedLanguages, id: \.rawValue) { language in
+              Text(localizedName(language)).tag(language)
+            }
           }
           .pickerStyle(.menu)
 

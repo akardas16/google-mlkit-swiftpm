@@ -97,6 +97,7 @@ def generate_release_notes(version, pod_changes_file = nil)
   notes << "- MLKitCommon.xcframework.zip"
   notes << "- GoogleToolboxForMac.xcframework.zip"
   notes << "- SSZipArchive.xcframework.zip"
+  notes << "- LatinOCRResources.bundle.zip (add to your app for Text Recognition)"
   notes << ""
 
   notes << "## Installation"

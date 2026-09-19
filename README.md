@@ -42,6 +42,21 @@ Add these flags to `Other Linker Flags` in Build Settings of your Xcode projects
 - `-ObjC`
 - `-all_load`
 
+### Text Recognition resource bundle (required for `MLKitTextRecognition`)
+
+The Latin Text Recognition OCR model ships as a resource bundle that **cannot** be embedded in a SwiftPM binary target. Without it, `TextRecognizer` crashes at runtime with:
+
+```
+MLKTextRecognizerInternalErrorCreationFailure ... reason: 'Invalid model path.'
+```
+
+To fix it, add the bundle to your app:
+
+1. Download `LatinOCRResources.bundle.zip` from the [release](https://github.com/akardas16/google-mlkit-swiftpm/releases/download/9.0.0-1/LatinOCRResources.bundle.zip) and unzip it.
+2. Drag `LatinOCRResources.bundle` into your Xcode project, check **Copy items if needed**, and make sure it's a member of your app target (it must land in *Copy Bundle Resources*).
+
+That's the same manual-bundle step ML Kit requires for any of its model-backed features distributed outside CocoaPods.
+
 ### Downloaded models at runtime
 
 **Note**: The Translation and Smart Reply modules download their models at runtime on first use. Check the official [ML Kit documentation](https://developers.google.com/ml-kit) for specific requirements.

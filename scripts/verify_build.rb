@@ -31,8 +31,17 @@ def verify_xcframeworks
     end
   end
 
+  # Text Recognition ships its OCR model as a separate resource bundle.
+  bundle_zip = 'GoogleMLKit/LatinOCRResources.bundle.zip'
+  if File.exist?(bundle_zip)
+    puts "✓ LatinOCRResources.bundle.zip (#{File.size(bundle_zip)} bytes)"
+  else
+    puts "✗ LatinOCRResources.bundle.zip - NOT FOUND"
+    missing << 'LatinOCRResources.bundle'
+  end
+
   if missing.empty?
-    puts "\n✓ All XCFrameworks built successfully!"
+    puts "\n✓ All XCFrameworks and the Text Recognition bundle built successfully!"
     return true
   else
     puts "\n✗ Missing files: #{missing.join(', ')}"

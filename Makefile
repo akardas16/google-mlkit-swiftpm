@@ -75,7 +75,14 @@ create-xcframework: bootstrap-builder build-cocoapods prepare-info-plist
 	-ios ./Pods/MLKitSmartReply/Frameworks/MLKitSmartReply.framework \
 	-output GoogleMLKit
 
-archive: create-xcframework
+# MLKitTextRecognition (Latin) ships its OCR model as a resource bundle that
+# cannot ride inside a SwiftPM binary target. Package it separately so it can be
+# published as a release asset and added to consumer apps manually.
+copy-resource-bundle: create-xcframework
+	@rm -rf ./GoogleMLKit/LatinOCRResources.bundle
+	@cp -rf "./Pods/MLKitTextRecognition/Resources/LatinOCRResources" "./GoogleMLKit/LatinOCRResources.bundle"
+
+archive: copy-resource-bundle
 	@cd ./GoogleMLKit/MLKitLanguageID.xcframework/ios-arm64/MLKitLanguageID.framework \
 	 && mv MLKitLanguageID MLKitLanguageID.o \
 	 && ar r MLKitLanguageID MLKitLanguageID.o \
@@ -117,6 +124,7 @@ archive: create-xcframework
 	 && zip -r GoogleToolboxForMac.xcframework.zip GoogleToolboxForMac.xcframework \
 	 && zip -r SSZipArchive.xcframework.zip SSZipArchive.xcframework \
 	 && zip -r MLKitNaturalLanguage.xcframework.zip MLKitNaturalLanguage.xcframework \
-	 && zip -r MLKitCommon.xcframework.zip MLKitCommon.xcframework
+	 && zip -r MLKitCommon.xcframework.zip MLKitCommon.xcframework \
+	 && zip -r LatinOCRResources.bundle.zip LatinOCRResources.bundle
 .PHONY:
 run: archive
