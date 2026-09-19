@@ -8,13 +8,13 @@ let package = Package(
   products: [
     .library(
       name: "MLKitLanguageID",
-      targets: ["MLKitLanguageID", "MLKitNaturalLanguage", "MLKitXenoCommon", "MLKitCommon", "GoogleToolboxForMac", "Common"]),
+      targets: ["MLKitLanguageID", "MLKitNaturalLanguage", "MLKitCommon", "GoogleToolboxForMac", "Common"]),
     .library(
       name: "MLKitTranslate",
-      targets: ["MLKitTranslate", "SSZipArchive", "MLKitNaturalLanguage", "MLKitXenoCommon", "MLKitCommon", "GoogleToolboxForMac", "Common"]),
+      targets: ["MLKitTranslate", "SSZipArchive", "MLKitNaturalLanguage", "MLKitCommon", "GoogleToolboxForMac", "Common"]),
     .library(
       name: "MLKitSmartReply",
-      targets: ["MLKitSmartReply", "MLKitLanguageID", "MLKitNaturalLanguage", "MLKitXenoCommon", "MLKitCommon", "GoogleToolboxForMac", "Common"]),
+      targets: ["MLKitSmartReply", "MLKitLanguageID", "MLKitNaturalLanguage", "MLKitCommon", "GoogleToolboxForMac", "Common"]),
     .library(
       name: "MLKitTextRecognition",
       targets: ["MLKitTextRecognition", "MLKitTextRecognitionCommon", "MLImage", "MLKitVision", "Common"]),
@@ -76,10 +76,6 @@ let package = Package(
       name: "MLKitSmartReply",
       url: "https://github.com/akardas16/google-mlkit-swiftpm/releases/download/9.0.0-1/MLKitSmartReply.xcframework.zip",
       checksum: "a1fe1e9c2ad5bde38bace6d64367cbdbed3a48d373e9493c8a91b907b637fda4"),
-    .binaryTarget(
-      name: "MLKitXenoCommon",
-      url: "https://github.com/akardas16/google-mlkit-swiftpm/releases/download/9.0.0-1/MLKitXenoCommon.xcframework.zip",
-      checksum: "34ee8e96f9aba5e1d9394935c3db2e255534b2bf45c883c38a011637b7e08653"),
     .binaryTarget(
       name: "MLKitNaturalLanguage",
       url: "https://github.com/akardas16/google-mlkit-swiftpm/releases/download/9.0.0-1/MLKitNaturalLanguage.xcframework.zip",

@@ -54,7 +54,6 @@ frameworks = %w[
   GoogleToolboxForMac
   SSZipArchive
   MLKitCommon
-  MLKitXenoCommon
   MLKitNaturalLanguage
   MLKitLanguageID
   MLKitTranslate

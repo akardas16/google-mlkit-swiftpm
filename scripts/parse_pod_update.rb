@@ -18,7 +18,7 @@ def parse_pod_log(log_content)
   log_content.each_line do |line|
     # Match patterns like:
     # Installing GoogleMLKit 9.0.0 (was 8.0.0)
-    # Installing MLKitXenoCommon 1.0.0-beta16 (was 1.0.0-beta15)
+    # Installing MLKitCommon 14.0.0 (was 13.0.0)
     # Installing NewComponent 1.0.0
     # Removing OldComponent
 

@@ -36,7 +36,6 @@ prepare-info-plist:
 	@cp -rf "./Resources/MLKitLanguageID-Info.plist" "./Pods/MLKitLanguageID/Frameworks/MLKitLanguageID.framework/Info.plist"
 	@cp -rf "./Resources/MLKitTranslate-Info.plist" "./Pods/MLKitTranslate/Frameworks/MLKitTranslate.framework/Info.plist"
 	@cp -rf "./Resources/MLKitSmartReply-Info.plist" "./Pods/MLKitSmartReply/Frameworks/MLKitSmartReply.framework/Info.plist"
-	@cp -rf "./Resources/MLKitXenoCommon-Info.plist" "./Pods/MLKitXenoCommon/Frameworks/MLKitXenoCommon.framework/Info.plist"
 	@cp -rf "./Resources/MLKitNaturalLanguage-Info.plist" "./Pods/MLKitNaturalLanguage/Frameworks/MLKitNaturalLanguage.framework/Info.plist"
 create-xcframework: bootstrap-builder build-cocoapods prepare-info-plist
 	@rm -rf GoogleMLKit
@@ -65,9 +64,6 @@ create-xcframework: bootstrap-builder build-cocoapods prepare-info-plist
 	-output GoogleMLKit
 	@xcframework-maker/.build/release/make-xcframework \
 	-ios ./Pods/MLKitTextRecognition/Frameworks/MLKitTextRecognition.framework \
-	-output GoogleMLKit
-	@xcframework-maker/.build/release/make-xcframework \
-	-ios ./Pods/MLKitXenoCommon/Frameworks/MLKitXenoCommon.framework \
 	-output GoogleMLKit
 	@xcframework-maker/.build/release/make-xcframework \
 	-ios ./Pods/MLKitLanguageID/Frameworks/MLKitLanguageID.framework \
@@ -121,7 +117,6 @@ archive: create-xcframework
 	 && zip -r GoogleToolboxForMac.xcframework.zip GoogleToolboxForMac.xcframework \
 	 && zip -r SSZipArchive.xcframework.zip SSZipArchive.xcframework \
 	 && zip -r MLKitNaturalLanguage.xcframework.zip MLKitNaturalLanguage.xcframework \
-	 && zip -r MLKitCommon.xcframework.zip MLKitCommon.xcframework \
-	 && zip -r MLKitXenoCommon.xcframework.zip MLKitXenoCommon.xcframework
+	 && zip -r MLKitCommon.xcframework.zip MLKitCommon.xcframework
 .PHONY:
 run: archive

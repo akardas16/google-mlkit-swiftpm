@@ -12,7 +12,6 @@ def verify_xcframeworks
     'MLImage',
     'MLKitVision',
     'MLKitNaturalLanguage',
-    'MLKitXenoCommon',
     'MLKitCommon',
     'GoogleToolboxForMac',
     'SSZipArchive'
@@ -83,7 +82,6 @@ def verify_info_plists
     'MLKitTextRecognitionCommon-Info.plist',
     'MLImage-Info.plist',
     'MLKitVision-Info.plist',
-    'MLKitXenoCommon-Info.plist',
     'MLKitNaturalLanguage-Info.plist'
   ]
 

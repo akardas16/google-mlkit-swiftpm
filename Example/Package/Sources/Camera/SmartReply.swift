@@ -1,6 +1,5 @@
 import Foundation
 @_exported import MLKitSmartReply
-@_exported import MLKitXenoCommon
 
 public struct SmartReplyClient {
   public var suggestReplies: ([TextMessage]) async throws -> (

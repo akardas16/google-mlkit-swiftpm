@@ -94,7 +94,6 @@ def generate_release_notes(version, pod_changes_file = nil)
   notes << "- MLImage.xcframework.zip"
   notes << "- MLKitVision.xcframework.zip"
   notes << "- MLKitNaturalLanguage.xcframework.zip"
-  notes << "- MLKitXenoCommon.xcframework.zip"
   notes << "- MLKitCommon.xcframework.zip"
   notes << "- GoogleToolboxForMac.xcframework.zip"
   notes << "- SSZipArchive.xcframework.zip"

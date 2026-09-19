@@ -52,7 +52,6 @@ FRAMEWORKS=(
   "GoogleToolboxForMac"
   "SSZipArchive"
   "MLKitCommon"
-  "MLKitXenoCommon"
   "MLKitNaturalLanguage"
   "MLKitLanguageID"
   "MLKitTranslate"

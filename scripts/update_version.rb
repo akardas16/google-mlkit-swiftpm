@@ -30,7 +30,6 @@ def parse_podfile_lock
 
   # Extract version numbers from PODS section - only top-level entries
   # Match entries like "  - MLKitCommon (12.0.0):" (with exactly 2 spaces before dash).
-  # Some pods (e.g. MLKitXenoCommon) use pre-release suffixes like "1.0.0-beta16";
   # the [\d.]+ capture below intentionally drops the suffix because App Store
   # rejects non-numeric CFBundleShortVersionString values.
   podfile_lock.scan(/^  - ([^\/\s]+)(?:\/[^\s]+)?\s+\(([^)]+)\):?/) do |name, version_str|
@@ -53,7 +52,6 @@ PLIST_TO_FRAMEWORK = {
   'MLKitVision-Info.plist' => 'MLKitVision',
   'MLKitTextRecognition-Info.plist' => 'MLKitTextRecognition',
   'MLKitTextRecognitionCommon-Info.plist' => 'MLKitTextRecognitionCommon',
-  'MLKitXenoCommon-Info.plist' => 'MLKitXenoCommon',
   'MLKitNaturalLanguage-Info.plist' => 'MLKitNaturalLanguage',
   'MLKitLanguageID-Info.plist' => 'MLKitLanguageID',
   'MLKitTranslate-Info.plist' => 'MLKitTranslate',
