@@ -109,8 +109,10 @@ struct TranslationView: View {
     let options = TranslatorOptions(sourceLanguage: sourceLanguage, targetLanguage: targetLanguage)
     let translator = Translator.translator(options: options)
 
+    // Allow cellular so the first-run model download isn't silently blocked
+    // when the device is off Wi-Fi.
     let conditions = ModelDownloadConditions(
-      allowsCellularAccess: false,
+      allowsCellularAccess: true,
       allowsBackgroundDownloading: true
     )
 
@@ -121,6 +123,8 @@ struct TranslationView: View {
 
       translatedText = try await translator.translate(inputText)
     } catch {
+      // Surface the real failure (model download vs. translate) in the UI and console.
+      print("[Translation] failed: \(error)")
       errorMessage = "Translation failed: \(error.localizedDescription)"
       translatedText = ""
       isDownloadingModel = false

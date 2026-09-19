@@ -11,6 +11,7 @@ struct MainMenuView: View {
         Section("Language Features") {
           NavigationLink("Language Identification", destination: LanguageIDView())
           NavigationLink("Translation", destination: TranslationView())
+          NavigationLink("Translation Models", destination: TranslationModelsView())
           NavigationLink("Smart Reply", destination: SmartReplyView())
         }
       }
