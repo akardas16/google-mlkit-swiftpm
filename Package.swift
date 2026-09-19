@@ -59,47 +59,47 @@ let package = Package(
     .binaryTarget(
       name: "MLKitCommon",
       url: "https://github.com/akardas16/google-mlkit-swiftpm/releases/download/9.0.0-1/MLKitCommon.xcframework.zip",
-      checksum: "0bdd21ce442688a1e115a985ee94b10f3c4b95d92469ae30bd629dcbd160fc30"),
+      checksum: "9a84b7e5a4198b6cfd36844dc797d1f70e69e6208d324e34a0d4fe0aa878ed87"),
     .binaryTarget(
       name: "GoogleToolboxForMac",
       url: "https://github.com/akardas16/google-mlkit-swiftpm/releases/download/9.0.0-1/GoogleToolboxForMac.xcframework.zip",
-      checksum: "a3e849c61951130ba3bbb4131a424d45c2c17cd91a97bf99a1c71463c7f38ed4"),
+      checksum: "4afb855eb88dc14c59211b4f84c706975ffd5b3f15c2c089f206401bd984f752"),
     .binaryTarget(
       name: "MLKitLanguageID",
       url: "https://github.com/akardas16/google-mlkit-swiftpm/releases/download/9.0.0-1/MLKitLanguageID.xcframework.zip",
-      checksum: "7353b120a98b3c20cac6fc0394737bfb66efa506f73282bad0f3c7274ec7ee2e"),
+      checksum: "69f6459180b02c961f78f945687ac99d9cdc0230fae7387b77b44906331be9a8"),
     .binaryTarget(
       name: "MLKitTranslate",
       url: "https://github.com/akardas16/google-mlkit-swiftpm/releases/download/9.0.0-1/MLKitTranslate.xcframework.zip",
-      checksum: "31590e1e87ee203ee932ef8bfdff768217e784fa36d613e99e0f70a6048134e7"),
+      checksum: "ae42c44a112bd0a189444d976623aeb6b1779e34a8fae8b9fb29a463b427ded8"),
     .binaryTarget(
       name: "MLKitSmartReply",
       url: "https://github.com/akardas16/google-mlkit-swiftpm/releases/download/9.0.0-1/MLKitSmartReply.xcframework.zip",
-      checksum: "5b72a6c9ef44a02eca4de7c7bfbd89a87fca629be33638ebabf5d1108050ebe8"),
+      checksum: "b34b23622b177233eb8e00b2cfb89dbd805760bc539b1594db467171ca8445e4"),
     .binaryTarget(
       name: "MLKitNaturalLanguage",
       url: "https://github.com/akardas16/google-mlkit-swiftpm/releases/download/9.0.0-1/MLKitNaturalLanguage.xcframework.zip",
-      checksum: "a1963bb9616a518f7ca82917e6e816cfb10a9176921b90ce76821bf1c929ee9d"),
+      checksum: "f0b8d9f57f7b920e44299dbcdbfa7cbdaf0eca01cb69091c3e7aa21801c12c7b"),
     .binaryTarget(
       name: "SSZipArchive",
       url: "https://github.com/akardas16/google-mlkit-swiftpm/releases/download/9.0.0-1/SSZipArchive.xcframework.zip",
-      checksum: "3fa398dd062fa089fbf01ea0cd900d929e93d93d86ac1da349a274f647b7b6fe"),
+      checksum: "c491279abcb055c093c7537d6828a76ed934144f9a1884465e686dd114a5b226"),
     .binaryTarget(
       name: "MLImage",
       url: "https://github.com/akardas16/google-mlkit-swiftpm/releases/download/9.0.0-1/MLImage.xcframework.zip",
-      checksum: "26c786e1d6876b9ada3bf451e2aeb4823ba74dd9b10b274a8a04b9d595b47269"),
+      checksum: "7b32404045b06c92ef2fa2e69689a74df909c65735168e4038e5568fdd0fa533"),
     .binaryTarget(
       name: "MLKitVision",
       url: "https://github.com/akardas16/google-mlkit-swiftpm/releases/download/9.0.0-1/MLKitVision.xcframework.zip",
-      checksum: "b03b9b162850d15615a3f8cf8eedab823a3bc977c381351b2c921f5446b9425e"),
+      checksum: "c3dc0e7dd583b33484225701412fe04aa9ad743237bcbfd395de096654da160e"),
     .binaryTarget(
       name: "MLKitTextRecognition",
       url: "https://github.com/akardas16/google-mlkit-swiftpm/releases/download/9.0.0-1/MLKitTextRecognition.xcframework.zip",
-      checksum: "5ae74653a21807763432de21ad5319dcf0b7b888eb127e3c919758fbc664b6ad"),
+      checksum: "7e4e1bfac4bcac7a05f0682d8b454f73d14e496a867308e1bb25a6850e797114"),
     .binaryTarget(
       name: "MLKitTextRecognitionCommon",
       url: "https://github.com/akardas16/google-mlkit-swiftpm/releases/download/9.0.0-1/MLKitTextRecognitionCommon.xcframework.zip",
-      checksum: "fe19552334aabafc915980876e69ccedb62464ef48ac4e1d07f0a9bc424405f0"),
+      checksum: "043589fd1d6743b43673e6bbeda729b3fbdafba042b29fb9186b1f7ea7896c58"),
     .target(
       name: "Common",
       dependencies: [
