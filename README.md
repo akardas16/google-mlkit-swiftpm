@@ -11,21 +11,15 @@ This is experimental project for building MLKit in Swift Package Manager.
 
 ### Use Swift Package Manager to install
 
-Add the package dependency to your `Package.swift`:
+Add the package dependency to your `Package.swift`, pinning the published release with `exact:`:
 
 ```swift
 dependencies: [
-    .package(url: "https://github.com/akardas16/google-mlkit-swiftpm", from: "9.0.0")
+    .package(url: "https://github.com/akardas16/google-mlkit-swiftpm", exact: "9.0.0-1")
 ]
 ```
 
-> **Submitting to App Store?** The `9.0.0` zips embed Info.plist values like `1.0.0-beta16` for a few internal frameworks, which App Store Connect rejects. Pin the wrapper-only repackage instead:
->
-> ```swift
-> .package(url: "https://github.com/akardas16/google-mlkit-swiftpm", exact: "9.0.0-1")
-> ```
->
-> `9.0.0-1` is a SemVer pre-release of the same upstream MLKit `9.0.0` build with the Info.plist regression fixed. SwiftPM's `from: "9.0.0"` excludes pre-release tags, so existing consumers stay on `9.0.0`; AppStore-blocked consumers opt in via `exact:`.
+> **Always pin `exact: "9.0.0-1"`.** `9.0.0-1` is the published release of this package (Google ML Kit `9.0.0` — Language APIs + Latin Text Recognition), with its XCFramework zips hosted on this repo's [Releases](https://github.com/akardas16/google-mlkit-swiftpm/releases). It is tagged as a SemVer *pre-release*, so a range rule such as `from: "9.0.0"` would **skip** it — use `exact:`. The build normalizes each framework's `CFBundleShortVersionString` to a numeric value, so the archives pass App Store Connect validation.
 
 Then add the specific ML Kit modules you need to your target dependencies:
 
