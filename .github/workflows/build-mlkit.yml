@@ -13,6 +13,10 @@ on:
         type: boolean
         default: true
 
+permissions:
+  contents: write
+  issues: write
+
 jobs:
   build:
     runs-on: macos-26
