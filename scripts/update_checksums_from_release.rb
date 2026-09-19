@@ -25,7 +25,7 @@ def update_package_swift(version, checksums)
   package_swift = File.read('Package.swift')
 
   checksums.each do |name, checksum|
-    url = "https://github.com/d-date/google-mlkit-swiftpm/releases/download/#{version}/#{name}.xcframework.zip"
+    url = "https://github.com/akardas16/google-mlkit-swiftpm/releases/download/#{version}/#{name}.xcframework.zip"
 
     # Match the binaryTarget block for this framework
     old_pattern = /\.binaryTarget\(\s*name:\s*"#{Regexp.escape(name)}",\s*url:\s*"[^"]+",\s*checksum:\s*"[^"]+"\s*\)/m
@@ -71,7 +71,7 @@ puts ""
 checksums = {}
 
 frameworks.each_with_index do |name, index|
-  url = "https://github.com/d-date/google-mlkit-swiftpm/releases/download/#{version}/#{name}.xcframework.zip"
+  url = "https://github.com/akardas16/google-mlkit-swiftpm/releases/download/#{version}/#{name}.xcframework.zip"
   print "[#{index + 1}/#{frameworks.size}] Downloading #{name}... "
 
   begin

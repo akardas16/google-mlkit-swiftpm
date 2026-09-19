@@ -15,14 +15,14 @@ Add the package dependency to your `Package.swift`:
 
 ```swift
 dependencies: [
-    .package(url: "https://github.com/d-date/google-mlkit-swiftpm", from: "9.0.0")
+    .package(url: "https://github.com/akardas16/google-mlkit-swiftpm", from: "9.0.0")
 ]
 ```
 
 > **Submitting to App Store?** The `9.0.0` zips embed Info.plist values like `1.0.0-beta16` for a few internal frameworks, which App Store Connect rejects. Pin the wrapper-only repackage instead:
 >
 > ```swift
-> .package(url: "https://github.com/d-date/google-mlkit-swiftpm", exact: "9.0.0-1")
+> .package(url: "https://github.com/akardas16/google-mlkit-swiftpm", exact: "9.0.0-1")
 > ```
 >
 > `9.0.0-1` is a SemVer pre-release of the same upstream MLKit `9.0.0` build with the Info.plist regression fixed. SwiftPM's `from: "9.0.0"` excludes pre-release tags, so existing consumers stay on `9.0.0`; AppStore-blocked consumers opt in via `exact:`.

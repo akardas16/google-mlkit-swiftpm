@@ -46,8 +46,8 @@ def update_package_swift(version, checksums, dependency_versions)
       /\.binaryTarget\(\s*name:\s*"#{name}",\s*url:\s*"[^"]+",\s*checksum:\s*"[^"]+"\)/m
     ) do |match|
       match.gsub(
-        %r{url:\s*"https://github\.com/d-date/google-mlkit-swiftpm/releases/download/[^/]+/},
-        "url: \"https://github.com/d-date/google-mlkit-swiftpm/releases/download/#{version}/"
+        %r{url:\s*"https://github\.com/akardas16/google-mlkit-swiftpm/releases/download/[^/]+/},
+        "url: \"https://github.com/akardas16/google-mlkit-swiftpm/releases/download/#{version}/"
       ).gsub(
         /checksum:\s*"[^"]+"/,
         "checksum: \"#{checksum}\""

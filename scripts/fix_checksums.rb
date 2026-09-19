@@ -79,7 +79,7 @@ puts ""
 checksums = {}
 
 FRAMEWORKS.each_with_index do |name, index|
-  url = "https://github.com/d-date/google-mlkit-swiftpm/releases/download/#{VERSION}/#{name}.xcframework.zip"
+  url = "https://github.com/akardas16/google-mlkit-swiftpm/releases/download/#{VERSION}/#{name}.xcframework.zip"
   print "[#{index + 1}/#{FRAMEWORKS.size}] Downloading #{name}... "
 
   begin

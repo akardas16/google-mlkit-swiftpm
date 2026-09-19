@@ -122,7 +122,7 @@ jobs:
             Add to your `Package.swift`:
 
             ```swift
-            .package(url: "https://github.com/d-date/google-mlkit-swiftpm", from: "${{ inputs.version }}")
+            .package(url: "https://github.com/akardas16/google-mlkit-swiftpm", from: "${{ inputs.version }}")
             ```
 
             ## What's Changed

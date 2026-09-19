@@ -162,7 +162,7 @@ If you find runtime issues:
 2. Note the iOS version and device
 3. Note the Xcode version used
 4. Check if issue exists in official CocoaPods version
-5. Report to: https://github.com/d-date/google-mlkit-swiftpm/issues
+5. Report to: https://github.com/akardas16/google-mlkit-swiftpm/issues
 
 Include:
 - MLKit version number

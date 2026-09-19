@@ -17,10 +17,10 @@ def update_readme(new_version)
   original_content = content.dup
 
   # Update Installation example (.package line)
-  # Example: .package(url: "https://github.com/d-date/google-mlkit-swiftpm", from: "5.0.0")
+  # Example: .package(url: "https://github.com/akardas16/google-mlkit-swiftpm", from: "5.0.0")
   content = content.gsub(
     /\.package\(url: "https:\/\/github\.com\/d-date\/google-mlkit-swiftpm", from: "[^"]+"\)/,
-    ".package(url: \"https://github.com/d-date/google-mlkit-swiftpm\", from: \"#{new_version}\")"
+    ".package(url: \"https://github.com/akardas16/google-mlkit-swiftpm\", from: \"#{new_version}\")"
   )
 
   # Check if any changes were made
@@ -36,7 +36,7 @@ def update_readme(new_version)
 
   # Show what was updated
   puts "\nUpdated sections:"
-  if content.include?(".package(url: \"https://github.com/d-date/google-mlkit-swiftpm\", from: \"#{new_version}\")")
+  if content.include?(".package(url: \"https://github.com/akardas16/google-mlkit-swiftpm\", from: \"#{new_version}\")")
     puts "  - Installation example"
   end
 end

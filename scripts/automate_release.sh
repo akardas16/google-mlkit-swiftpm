@@ -114,7 +114,7 @@ echo ""
 echo "Step 5: Creating and pushing tag..."
 git tag -a "$VERSION" -m "Release MLKit $VERSION
 
-See release notes: https://github.com/d-date/google-mlkit-swiftpm/releases/tag/$VERSION"
+See release notes: https://github.com/akardas16/google-mlkit-swiftpm/releases/tag/$VERSION"
 
 echo "✓ Tag created: $VERSION"
 echo ""
@@ -135,5 +135,5 @@ echo "✓ Release $VERSION completed successfully!"
 echo "==================================="
 echo ""
 echo "Release URL:"
-echo "https://github.com/d-date/google-mlkit-swiftpm/releases/tag/$VERSION"
+echo "https://github.com/akardas16/google-mlkit-swiftpm/releases/tag/$VERSION"
 echo ""
