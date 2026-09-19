@@ -10,7 +10,7 @@ def update_podfile(new_version)
   pod_version = new_version.sub(/-.*\z/, '')
   podfile = File.read('Podfile')
   updated = podfile.gsub(
-    /pod\s+'GoogleMLKit\/(FaceDetection|BarcodeScanning|TextRecognition|TextRecognitionChinese|TextRecognitionDevanagari|TextRecognitionJapanese|TextRecognitionKorean|ImageLabeling|ImageLabelingCustom|ObjectDetection|ObjectDetectionCustom|PoseDetection|PoseDetectionAccurate|SegmentationSelfie|LanguageID|Translate|SmartReply)',\s+'~>\s+[0-9]+(?:\.[0-9]+)*'/,
+    /pod\s+'GoogleMLKit\/(TextRecognition|LanguageID|Translate|SmartReply)',\s+'~>\s+[0-9]+(?:\.[0-9]+)*'/,
     "pod 'GoogleMLKit/\\1', '~> #{pod_version}'"
   )
   File.write('Podfile', updated)
@@ -49,28 +49,10 @@ end
 # file keeps a stale (and possibly App-Store-illegal) version string.
 PLIST_TO_FRAMEWORK = {
   'MLKitCommon-Info.plist' => 'MLKitCommon',
-  'MLKitBarcodeScanning-Info.plist' => 'MLKitBarcodeScanning',
-  'MLKitFaceDetection-Info.plist' => 'MLKitFaceDetection',
-  'MLKitVision-Info.plist' => 'MLKitVision',
-  'MLKitVisionKit-Info.plist' => 'MLKitVisionKit',
   'MLImage-Info.plist' => 'MLImage',
+  'MLKitVision-Info.plist' => 'MLKitVision',
   'MLKitTextRecognition-Info.plist' => 'MLKitTextRecognition',
-  'MLKitTextRecognitionChinese-Info.plist' => 'MLKitTextRecognitionChinese',
-  'MLKitTextRecognitionDevanagari-Info.plist' => 'MLKitTextRecognitionDevanagari',
-  'MLKitTextRecognitionJapanese-Info.plist' => 'MLKitTextRecognitionJapanese',
-  'MLKitTextRecognitionKorean-Info.plist' => 'MLKitTextRecognitionKorean',
   'MLKitTextRecognitionCommon-Info.plist' => 'MLKitTextRecognitionCommon',
-  'MLKitImageLabeling-Info.plist' => 'MLKitImageLabeling',
-  'MLKitImageLabelingCustom-Info.plist' => 'MLKitImageLabelingCustom',
-  'MLKitImageLabelingCommon-Info.plist' => 'MLKitImageLabelingCommon',
-  'MLKitObjectDetection-Info.plist' => 'MLKitObjectDetection',
-  'MLKitObjectDetectionCustom-Info.plist' => 'MLKitObjectDetectionCustom',
-  'MLKitObjectDetectionCommon-Info.plist' => 'MLKitObjectDetectionCommon',
-  'MLKitPoseDetection-Info.plist' => 'MLKitPoseDetection',
-  'MLKitPoseDetectionAccurate-Info.plist' => 'MLKitPoseDetectionAccurate',
-  'MLKitPoseDetectionCommon-Info.plist' => 'MLKitPoseDetectionCommon',
-  'MLKitSegmentationSelfie-Info.plist' => 'MLKitSegmentationSelfie',
-  'MLKitSegmentationCommon-Info.plist' => 'MLKitSegmentationCommon',
   'MLKitXenoCommon-Info.plist' => 'MLKitXenoCommon',
   'MLKitNaturalLanguage-Info.plist' => 'MLKitNaturalLanguage',
   'MLKitLanguageID-Info.plist' => 'MLKitLanguageID',

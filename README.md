@@ -33,15 +33,7 @@ Then add the specific ML Kit modules you need to your target dependencies:
 .target(
     name: "YourTarget",
     dependencies: [
-        .product(name: "MLKitBarcodeScanning", package: "google-mlkit-swiftpm"),
-        .product(name: "MLKitFaceDetection", package: "google-mlkit-swiftpm"),
         .product(name: "MLKitTextRecognition", package: "google-mlkit-swiftpm"),
-        // Also available: MLKitTextRecognitionChinese, MLKitTextRecognitionDevanagari,
-        //                  MLKitTextRecognitionJapanese, MLKitTextRecognitionKorean
-        .product(name: "MLKitImageLabeling", package: "google-mlkit-swiftpm"),
-        .product(name: "MLKitObjectDetection", package: "google-mlkit-swiftpm"),
-        .product(name: "MLKitPoseDetection", package: "google-mlkit-swiftpm"),
-        .product(name: "MLKitSegmentationSelfie", package: "google-mlkit-swiftpm"),
         .product(name: "MLKitLanguageID", package: "google-mlkit-swiftpm"),
         .product(name: "MLKitTranslate", package: "google-mlkit-swiftpm"),
         .product(name: "MLKitSmartReply", package: "google-mlkit-swiftpm"),
@@ -56,29 +48,16 @@ Add these flags to `Other Linker Flags` in Build Settings of your Xcode projects
 - `-ObjC`
 - `-all_load`
 
-### Link resource bundles to your project (if needed)
+### Downloaded models at runtime
 
-Some ML Kit modules require resource bundles. Currently:
-
-#### Face Detection
-The `MLKitFaceDetection` module requires `GoogleMVFaceDetectorResources.bundle`. Since bundles can't be automatically included via Swift Package Manager, you need to manually add it to your project.
-
-Download `GoogleMVFaceDetectorResources.bundle` from [Release](https://github.com/d-date/google-mlkit-swiftpm/releases/download/9.0.0/GoogleMVFaceDetectorResources.bundle.zip) and add it to your Xcode project, ensuring it's included in your build target.
-
-**Note**: Other modules (Text Recognition, Pose Detection, Object Detection, Selfie Segmentation, Translation) may also require resource bundles or downloaded models at runtime. Check the official [ML Kit documentation](https://developers.google.com/ml-kit) for specific requirements.
+**Note**: The Translation and Smart Reply modules download their models at runtime on first use. Check the official [ML Kit documentation](https://developers.google.com/ml-kit) for specific requirements.
 
 ## Supported Features
 
 This package supports the following Google ML Kit features:
 
 ### Vision APIs
-- **Barcode Scanning** - Scan and decode barcodes
-- **Face Detection** - Detect faces and facial features
-- **Text Recognition** - Recognize text in images (v2) with variants for Chinese, Devanagari, Japanese, and Korean
-- **Image Labeling** - Identify objects, locations, activities, and more (standard and custom models)
-- **Object Detection & Tracking** - Detect and track objects in images and video (standard and custom models)
-- **Pose Detection** - Detect body poses and positions (standard and accurate)
-- **Selfie Segmentation** - Segment people from the background
+- **Text Recognition** - Recognize Latin-script text in images (v2)
 
 ### Language APIs
 - **Language Identification** - Identify the language of text

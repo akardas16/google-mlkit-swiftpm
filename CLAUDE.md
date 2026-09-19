@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## What this repo is
 
-A SwiftPM binary-distribution wrapper around Google ML Kit. ML Kit ships only via CocoaPods, so this repo downloads those pods, rebuilds them with `xcodebuild`, converts them to XCFrameworks, zips them, publishes the zips as GitHub Release assets, and exposes 17 SwiftPM library products in `Package.swift` whose `binaryTarget`s point at those zips.
+A SwiftPM binary-distribution wrapper around Google ML Kit's **Language APIs** plus Latin **Text Recognition**. ML Kit ships only via CocoaPods, so this repo downloads those pods, rebuilds them with `xcodebuild`, converts them to XCFrameworks, zips them, publishes the zips as GitHub Release assets, and exposes 4 SwiftPM library products (`MLKitLanguageID`, `MLKitTranslate`, `MLKitSmartReply`, `MLKitTextRecognition`) in `Package.swift` whose `binaryTarget`s point at those zips.
 
 This is **not an app project**. Almost all maintenance work happens in the build pipeline (`Makefile`, `Podfile`, `Package.swift`, `Resources/*-Info.plist`, `scripts/*.rb`), not in Swift sources. The only first-party Swift file is `Sources/Common/export.swift` (`@_exported import MLKitCommon`).
 
@@ -53,11 +53,11 @@ The Makefile is the single source of truth for the build. Targets form a 6-stage
 3. **`build-cocoapods`** — runs `xcodebuild` against the generated `Pods.xcodeproj` for both `iphoneos` and `iphonesimulator` SDKs at iOS 12.0 deployment target.
 4. **`prepare-info-plist`** — copies each `Resources/<Name>-Info.plist` template into `Pods/<Name>/Frameworks/<Name>.framework/Info.plist`. ML Kit pods ship without proper Info.plists; without this step the SwiftPM consumer crashes at launch with "The bundle doesn't contain…".
 5. **`create-xcframework`** — calls `xcframework-maker/.build/release/make-xcframework` for every MLKit module, plus raw `xcodebuild -create-xcframework` for `GoogleToolboxForMac` and `SSZipArchive`. Output lands in `GoogleMLKit/`.
-6. **`archive`** — for static frameworks shipped as FAT object files (BarcodeScanning, FaceDetection, ImageLabeling, LanguageID, Translate, SmartReply), runs `mv → ar r → ranlib` inside both slices to convert the Mach-O object into a real `ar` archive. Then `zip -r` every `.xcframework` and `GoogleMVFaceDetectorResources.bundle` into `GoogleMLKit/`.
+6. **`archive`** — for static frameworks shipped as FAT object files (LanguageID, Translate, SmartReply), runs `mv → ar r → ranlib` inside both slices to convert the Mach-O object into a real `ar` archive. Then `zip -r` every `.xcframework` into `GoogleMLKit/`.
 
 ### Module surface in `Package.swift`
 
-- 17 `.library` products and ~30 `.binaryTarget` entries. Each binary target points at `https://github.com/d-date/google-mlkit-swiftpm/releases/download/<version>/<Name>.xcframework.zip` with a SHA256 checksum.
+- 4 `.library` products (`MLKitLanguageID`, `MLKitTranslate`, `MLKitSmartReply`, `MLKitTextRecognition`) and 12 `.binaryTarget` entries (those four plus shared deps `MLKitTextRecognitionCommon`, `MLImage`, `MLKitVision`, `MLKitNaturalLanguage`, `MLKitXenoCommon`, `MLKitCommon`, `GoogleToolboxForMac`, `SSZipArchive`). Each binary target points at `https://github.com/d-date/google-mlkit-swiftpm/releases/download/<version>/<Name>.xcframework.zip` with a SHA256 checksum.
 - One real `.target` named `Common` re-exports `MLKitCommon` and pulls in non-binary Google SwiftPM dependencies (GoogleUtilities, gtm-session-fetcher, GoogleDataTransport, nanopb, promises). Every public library composes its binary target with `Common`, so consumers don't have to wire these themselves.
 - A block of commented-out `.binaryTarget(name:path:)` entries near the top is intentionally kept for local debugging — uncomment them (and comment the URL-based ones) to point SwiftPM at `GoogleMLKit/*.xcframework` directly.
 
@@ -65,7 +65,6 @@ The Makefile is the single source of truth for the build. Targets form a 6-stage
 
 - **No arm64 iOS Simulator slice.** ML Kit's pre-built binaries don't include arm64 simulator. The Makefile only produces `arm64` for iphoneos and `x86_64` for iphonesimulator. Apple Silicon Macs cannot use the simulator — test on a real device.
 - **Consumer linker flags.** Apps consuming this package must add `-ObjC` and `-all_load` to *Other Linker Flags*, otherwise they crash at runtime with `unrecognized selector`.
-- **`MLKitFaceDetection` resource bundle.** `GoogleMVFaceDetectorResources.bundle` cannot ride along inside SwiftPM. It ships as a separate `.zip` on the GitHub Release; consumers must add it to their Xcode project manually.
 - **Submodule + Ruby version mismatch.** `xcframework-maker/` is a git submodule (`git submodule update --init` required). `.tool-versions` pins Ruby 4.0.1 for local dev but CI workflows pin Ruby 3.3 — a recent regression (PR #86) was caused by Ruby 4.0 incompatibility on macos-15 runners. Don't bump CI back to 4.x without verifying.
 - **Adding a new MLKit module is a multi-file change.** It touches `Podfile`, a new `Resources/<Name>-Info.plist` (copy from a sibling), the `Makefile` (`prepare-info-plist` + `create-xcframework` + `archive` zip list, plus the ar/ranlib block if it's static-only), `Package.swift` (new `.binaryTarget` and either a new `.library` or addition to an existing product's target list), and possibly `scripts/update_checksums.rb` if it enumerates frameworks.
 - **Don't hand-edit Pods.** The Podfile's `post_install` strips `ARCHS` so the Makefile can drive architecture choice. Don't `pod install` outside `make bootstrap-cocoapods`.

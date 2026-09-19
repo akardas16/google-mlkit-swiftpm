@@ -134,13 +134,7 @@ jobs:
             ## Available Libraries
 
             ### Vision APIs
-            - MLKitBarcodeScanning
-            - MLKitFaceDetection
-            - MLKitTextRecognition (+ Chinese, Devanagari, Japanese, Korean)
-            - MLKitImageLabeling (+ Custom)
-            - MLKitObjectDetection (+ Custom)
-            - MLKitPoseDetection (+ Accurate)
-            - MLKitSegmentationSelfie
+            - MLKitTextRecognition (Latin)
 
             ### Language APIs
             - MLKitLanguageID
@@ -152,7 +146,6 @@ jobs:
           prerelease: ${{ contains(inputs.version, '-') }}
           files: |
             GoogleMLKit/*.xcframework.zip
-            GoogleMLKit/*.bundle.zip
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
@@ -160,7 +153,7 @@ jobs:
         if: inputs.create_release && steps.check_release.outputs.exists == 'true'
         run: |
           echo "Uploading new assets to existing release..."
-          gh release upload ${{ inputs.version }} GoogleMLKit/*.xcframework.zip GoogleMLKit/*.bundle.zip --clobber
+          gh release upload ${{ inputs.version }} GoogleMLKit/*.xcframework.zip --clobber
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
@@ -171,7 +164,6 @@ jobs:
           name: xcframeworks-${{ inputs.version }}
           path: |
             GoogleMLKit/*.xcframework.zip
-            GoogleMLKit/*.bundle.zip
           retention-days: 30
 
       - name: Comment on related issue

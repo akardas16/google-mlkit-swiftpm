@@ -52,26 +52,17 @@ version = ARGV[0]
 
 frameworks = %w[
   GoogleToolboxForMac
-  MLImage
-  MLKitBarcodeScanning
+  SSZipArchive
   MLKitCommon
-  MLKitFaceDetection
-  MLKitImageLabeling
-  MLKitImageLabelingCustom
+  MLKitXenoCommon
+  MLKitNaturalLanguage
   MLKitLanguageID
-  MLKitObjectDetection
-  MLKitObjectDetectionCustom
-  MLKitPoseDetection
-  MLKitPoseDetectionAccurate
-  MLKitSegmentationSelfie
-  MLKitSmartReply
-  MLKitTextRecognition
-  MLKitTextRecognitionChinese
-  MLKitTextRecognitionDevanagari
-  MLKitTextRecognitionJapanese
-  MLKitTextRecognitionKorean
   MLKitTranslate
+  MLKitSmartReply
+  MLImage
   MLKitVision
+  MLKitTextRecognition
+  MLKitTextRecognitionCommon
 ]
 
 puts "Downloading and calculating checksums for #{frameworks.size} frameworks from release #{version}..."

@@ -4,7 +4,6 @@
 # Update README.md with new MLKit version
 # This script updates:
 # 1. Installation example version
-# 2. Bundle download link version
 
 def update_readme(new_version)
   readme_path = 'README.md'
@@ -24,19 +23,11 @@ def update_readme(new_version)
     ".package(url: \"https://github.com/d-date/google-mlkit-swiftpm\", from: \"#{new_version}\")"
   )
 
-  # Update bundle download link
-  # Example: Download `GoogleMVFaceDetectorResources.bundle` from [Release](https://github.com/d-date/google-mlkit-swiftpm/releases/download/3.2.0/GoogleMVFaceDetectorResources.bundle.zip)
-  content = content.gsub(
-    %r{https://github\.com/d-date/google-mlkit-swiftpm/releases/download/[^/]+/GoogleMVFaceDetectorResources\.bundle\.zip},
-    "https://github.com/d-date/google-mlkit-swiftpm/releases/download/#{new_version}/GoogleMVFaceDetectorResources.bundle.zip"
-  )
-
   # Check if any changes were made
   if content == original_content
     puts "Warning: No version references found in README.md"
     puts "Expected to update:"
     puts "  1. Installation .package(url:..., from: \"VERSION\")"
-    puts "  2. Bundle download link with version in URL"
     return
   end
 
@@ -47,9 +38,6 @@ def update_readme(new_version)
   puts "\nUpdated sections:"
   if content.include?(".package(url: \"https://github.com/d-date/google-mlkit-swiftpm\", from: \"#{new_version}\")")
     puts "  - Installation example"
-  end
-  if content.include?("releases/download/#{new_version}/GoogleMVFaceDetectorResources.bundle.zip")
-    puts "  - Bundle download link"
   end
 end
 

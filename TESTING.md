@@ -55,20 +55,16 @@ open Example.xcworkspace
 #### Device Testing (Required)
 1. [ ] Build for physical iOS device
 2. [ ] App launches without crash
-3. [ ] Navigate to Barcode Scanner
-4. [ ] Scan a barcode (QR code)
+3. [ ] Navigate to Text Recognition
+4. [ ] Recognize Latin text in the sample image
 5. [ ] Check console for warnings
-6. [ ] Navigate to Face Detection
-7. [ ] Use face detection feature
-8. [ ] Check console for warnings
-9. [ ] Test Text Recognition (if UI available)
-10. [ ] Test Image Labeling (if UI available)
-11. [ ] Test Object Detection (if UI available)
-12. [ ] Test Pose Detection (if UI available)
-13. [ ] Test Selfie Segmentation (if UI available)
-14. [ ] Test Language ID (if UI available)
-15. [ ] Test Translation (if UI available)
-16. [ ] Test Smart Reply (if UI available)
+6. [ ] Navigate to Language Identification
+7. [ ] Identify the language of a sample text
+8. [ ] Navigate to Translation
+9. [ ] Download a model and translate text
+10. [ ] Navigate to Smart Reply
+11. [ ] Generate reply suggestions for a conversation
+12. [ ] Check console for warnings
 
 #### Simulator Testing (Optional)
 1. [ ] Build for iOS Simulator (Intel Mac)
@@ -85,7 +81,7 @@ open Example.xcworkspace
 
 ❌ **Crash when using MLKit features**
 - Missing ObjC categories (use `-ObjC` linker flag)
-- Missing resources (face detection models)
+- Missing models (Translation/Smart Reply download models at runtime)
 - Incomplete binary linkage (use `-all_load`)
 
 ❌ **Runtime warnings**

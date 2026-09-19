@@ -36,11 +36,12 @@ def generate_release_notes(version, pod_changes_file = nil)
 
   # Extract key framework versions
   mlkit_frameworks = {
-    'MLKitBarcodeScanning' => framework_versions['MLKitBarcodeScanning'],
-    'MLKitFaceDetection' => framework_versions['MLKitFaceDetection'],
+    'MLKitLanguageID' => framework_versions['MLKitLanguageID'],
+    'MLKitTranslate' => framework_versions['MLKitTranslate'],
+    'MLKitSmartReply' => framework_versions['MLKitSmartReply'],
+    'MLKitTextRecognition' => framework_versions['MLKitTextRecognition'],
+    'MLKitNaturalLanguage' => framework_versions['MLKitNaturalLanguage'],
     'MLKitCommon' => framework_versions['MLKitCommon'],
-    'MLKitVision' => framework_versions['MLKitVision'],
-    'MLImage' => framework_versions['MLImage'],
     'GoogleToolboxForMac' => framework_versions['GoogleToolboxForMac']
   }.compact
 
@@ -85,13 +86,18 @@ def generate_release_notes(version, pod_changes_file = nil)
   notes << "## XCFrameworks"
   notes << ""
   notes << "This release includes the following assets:"
-  notes << "- MLKitBarcodeScanning.xcframework.zip"
-  notes << "- MLKitFaceDetection.xcframework.zip"
+  notes << "- MLKitLanguageID.xcframework.zip"
+  notes << "- MLKitTranslate.xcframework.zip"
+  notes << "- MLKitSmartReply.xcframework.zip"
+  notes << "- MLKitTextRecognition.xcframework.zip"
+  notes << "- MLKitTextRecognitionCommon.xcframework.zip"
   notes << "- MLImage.xcframework.zip"
-  notes << "- MLKitCommon.xcframework.zip"
   notes << "- MLKitVision.xcframework.zip"
+  notes << "- MLKitNaturalLanguage.xcframework.zip"
+  notes << "- MLKitXenoCommon.xcframework.zip"
+  notes << "- MLKitCommon.xcframework.zip"
   notes << "- GoogleToolboxForMac.xcframework.zip"
-  notes << "- GoogleMVFaceDetectorResources.bundle.zip"
+  notes << "- SSZipArchive.xcframework.zip"
   notes << ""
 
   notes << "## Installation"

@@ -31,10 +31,6 @@
 		D5F799242EEE79C10092B26F /* PBXFileSystemSynchronizedBuildFileExceptionSet */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
-				GoogleMVFaceDetectorResources.bundle,
-				MLKitImageLabelingResources.bundle,
-				MLKitObjectDetectionCommonResources.bundle,
-				MLKitObjectDetectionResources.bundle,
 				MLKitTranslate_resource.bundle,
 				MLKitXenoResources.bundle,
 				PredictOnDevice_resource.bundle,

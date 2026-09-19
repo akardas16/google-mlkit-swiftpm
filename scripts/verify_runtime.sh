@@ -78,12 +78,12 @@ echo "Step 3: Checking for symbol conflicts..."
 echo ""
 
 # Extract symbols from main frameworks to check for duplicates
-echo "Extracting symbols from MLKitBarcodeScanning..."
-if [ -f "GoogleMLKit/MLKitBarcodeScanning.xcframework/ios-arm64/MLKitBarcodeScanning.framework/MLKitBarcodeScanning" ]; then
-  nm -gU GoogleMLKit/MLKitBarcodeScanning.xcframework/ios-arm64/MLKitBarcodeScanning.framework/MLKitBarcodeScanning | head -20
-  echo "✓ MLKitBarcodeScanning symbols look valid"
+echo "Extracting symbols from MLKitLanguageID..."
+if [ -f "GoogleMLKit/MLKitLanguageID.xcframework/ios-arm64/MLKitLanguageID.framework/MLKitLanguageID" ]; then
+  nm -gU GoogleMLKit/MLKitLanguageID.xcframework/ios-arm64/MLKitLanguageID.framework/MLKitLanguageID | head -20
+  echo "✓ MLKitLanguageID symbols look valid"
 else
-  echo "✗ Could not check MLKitBarcodeScanning symbols"
+  echo "✗ Could not check MLKitLanguageID symbols"
 fi
 
 echo ""
@@ -91,10 +91,10 @@ echo "Step 4: Verifying Package.swift linkage..."
 echo ""
 
 # Check Package.swift for proper target dependencies
-if grep -q "MLKitBarcodeScanning" Package.swift && \
-   grep -q "MLKitFaceDetection" Package.swift && \
-   grep -q "MLImage" Package.swift && \
-   grep -q "MLKitVision" Package.swift && \
+if grep -q "MLKitLanguageID" Package.swift && \
+   grep -q "MLKitTranslate" Package.swift && \
+   grep -q "MLKitSmartReply" Package.swift && \
+   grep -q "MLKitNaturalLanguage" Package.swift && \
    grep -q "Common" Package.swift; then
   echo "✓ Package.swift contains all expected targets"
 else
@@ -118,8 +118,8 @@ echo "   - This is a known MLKit limitation"
 echo ""
 echo "3. Manual testing required:"
 echo "   - Build the Example app on a real device"
-echo "   - Test basic barcode scanning functionality"
-echo "   - Test basic face detection functionality"
+echo "   - Test basic language identification functionality"
+echo "   - Test basic translation functionality"
 echo "   - Check Xcode console for runtime warnings"
 echo ""
 echo "4. Common runtime issues to watch for:"

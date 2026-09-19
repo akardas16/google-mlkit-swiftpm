@@ -52,7 +52,7 @@ end
 # Get current version from Podfile
 def get_current_version
   podfile = File.read('Podfile')
-  if podfile =~ /pod\s+'GoogleMLKit\/BarcodeScanning',\s+'~>\s+([0-9.]+)'/
+  if podfile =~ /pod\s+'GoogleMLKit\/LanguageID',\s+'~>\s+([0-9.]+)'/
     return $1
   end
   raise "Could not parse version from Podfile"

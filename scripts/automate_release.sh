@@ -36,13 +36,15 @@ echo ""
 echo "Step 1: Checking prerequisites..."
 
 REQUIRED_FILES=(
+  "GoogleMLKit/MLKitLanguageID.xcframework.zip"
+  "GoogleMLKit/MLKitTranslate.xcframework.zip"
+  "GoogleMLKit/MLKitSmartReply.xcframework.zip"
+  "GoogleMLKit/MLKitTextRecognition.xcframework.zip"
   "GoogleMLKit/MLImage.xcframework.zip"
-  "GoogleMLKit/MLKitBarcodeScanning.xcframework.zip"
-  "GoogleMLKit/MLKitCommon.xcframework.zip"
-  "GoogleMLKit/MLKitFaceDetection.xcframework.zip"
   "GoogleMLKit/MLKitVision.xcframework.zip"
+  "GoogleMLKit/MLKitNaturalLanguage.xcframework.zip"
+  "GoogleMLKit/MLKitCommon.xcframework.zip"
   "GoogleMLKit/GoogleToolboxForMac.xcframework.zip"
-  "GoogleMLKit/GoogleMVFaceDetectorResources.bundle.zip"
 )
 
 MISSING_FILES=()

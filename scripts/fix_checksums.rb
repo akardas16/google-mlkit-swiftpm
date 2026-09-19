@@ -9,26 +9,17 @@ VERSION = ARGV[0] || '9.0.0'
 
 FRAMEWORKS = %w[
   GoogleToolboxForMac
-  MLImage
-  MLKitBarcodeScanning
+  SSZipArchive
   MLKitCommon
-  MLKitFaceDetection
-  MLKitImageLabeling
-  MLKitImageLabelingCustom
+  MLKitXenoCommon
+  MLKitNaturalLanguage
   MLKitLanguageID
-  MLKitObjectDetection
-  MLKitObjectDetectionCustom
-  MLKitPoseDetection
-  MLKitPoseDetectionAccurate
-  MLKitSegmentationSelfie
-  MLKitSmartReply
-  MLKitTextRecognition
-  MLKitTextRecognitionChinese
-  MLKitTextRecognitionDevanagari
-  MLKitTextRecognitionJapanese
-  MLKitTextRecognitionKorean
   MLKitTranslate
+  MLKitSmartReply
+  MLImage
   MLKitVision
+  MLKitTextRecognition
+  MLKitTextRecognitionCommon
 ].freeze
 
 def download_and_checksum(url)

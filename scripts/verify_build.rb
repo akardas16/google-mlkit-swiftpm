@@ -4,27 +4,18 @@
 # Verify that the build completed successfully
 def verify_xcframeworks
   required_frameworks = [
-    'MLKitBarcodeScanning',
-    'MLKitFaceDetection',
-    'MLKitTextRecognition',
-    'MLKitTextRecognitionChinese',
-    'MLKitTextRecognitionDevanagari',
-    'MLKitTextRecognitionJapanese',
-    'MLKitTextRecognitionKorean',
-    'MLKitImageLabeling',
-    'MLKitImageLabelingCustom',
-    'MLKitObjectDetection',
-    'MLKitObjectDetectionCustom',
-    'MLKitPoseDetection',
-    'MLKitPoseDetectionAccurate',
-    'MLKitSegmentationSelfie',
     'MLKitLanguageID',
     'MLKitTranslate',
     'MLKitSmartReply',
+    'MLKitTextRecognition',
+    'MLKitTextRecognitionCommon',
     'MLImage',
-    'MLKitCommon',
     'MLKitVision',
-    'GoogleToolboxForMac'
+    'MLKitNaturalLanguage',
+    'MLKitXenoCommon',
+    'MLKitCommon',
+    'GoogleToolboxForMac',
+    'SSZipArchive'
   ]
 
   puts "Checking for XCFramework zip files..."
@@ -41,18 +32,8 @@ def verify_xcframeworks
     end
   end
 
-  # Check for bundle
-  bundle_zip = 'GoogleMLKit/GoogleMVFaceDetectorResources.bundle.zip'
-  if File.exist?(bundle_zip)
-    size = File.size(bundle_zip)
-    puts "✓ GoogleMVFaceDetectorResources.bundle.zip (#{size} bytes)"
-  else
-    puts "✗ GoogleMVFaceDetectorResources.bundle.zip - NOT FOUND"
-    missing << 'GoogleMVFaceDetectorResources.bundle'
-  end
-
   if missing.empty?
-    puts "\n✓ All XCFrameworks and bundle built successfully!"
+    puts "\n✓ All XCFrameworks built successfully!"
     return true
   else
     puts "\n✗ Missing files: #{missing.join(', ')}"
@@ -95,25 +76,15 @@ def verify_info_plists
   puts "\nChecking Info.plist files..."
   required_plists = [
     'MLKitCommon-Info.plist',
-    'MLKitBarcodeScanning-Info.plist',
-    'MLKitFaceDetection-Info.plist',
-    'MLKitVision-Info.plist',
-    'MLImage-Info.plist',
-    'MLKitTextRecognition-Info.plist',
-    'MLKitTextRecognitionChinese-Info.plist',
-    'MLKitTextRecognitionDevanagari-Info.plist',
-    'MLKitTextRecognitionJapanese-Info.plist',
-    'MLKitTextRecognitionKorean-Info.plist',
-    'MLKitImageLabeling-Info.plist',
-    'MLKitImageLabelingCustom-Info.plist',
-    'MLKitObjectDetection-Info.plist',
-    'MLKitObjectDetectionCustom-Info.plist',
-    'MLKitPoseDetection-Info.plist',
-    'MLKitPoseDetectionAccurate-Info.plist',
-    'MLKitSegmentationSelfie-Info.plist',
     'MLKitLanguageID-Info.plist',
     'MLKitTranslate-Info.plist',
-    'MLKitSmartReply-Info.plist'
+    'MLKitSmartReply-Info.plist',
+    'MLKitTextRecognition-Info.plist',
+    'MLKitTextRecognitionCommon-Info.plist',
+    'MLImage-Info.plist',
+    'MLKitVision-Info.plist',
+    'MLKitXenoCommon-Info.plist',
+    'MLKitNaturalLanguage-Info.plist'
   ]
 
   missing = []
